@@ -8,7 +8,7 @@ export const UserView = () => {
 
   useEffect(() => {
     dispatch(fetchUsers())
-  }, []) // <--- Fixed: Dependency array is now inside the function call
+  }, [])
 
   return (
     <div>
@@ -16,7 +16,6 @@ export const UserView = () => {
       {user.loading && <div>Loading...</div>}
       {!user.loading && user.error ? <div>Error: {user.error}</div> : null}
 
-      {/* Note: Ensure your slice returns objects with .name, or update this map */}
       {!user.loading && user.users.length ? (
         <ul>
           {user.users.map((u) => (

@@ -7,7 +7,6 @@ const initialState = {
   error: "",
 }
 
-// Fixed: Added 'return' and typically you want the full user object (name/id), not just IDs
 export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
   return axios
     .get("https://jsonplaceholder.typicode.com/users")
@@ -17,7 +16,7 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", async () => {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {}, // Added empty reducers object (good practice even if empty)
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchUsers.pending, (state) => {
       state.loading = true
